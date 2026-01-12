@@ -8,6 +8,11 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "jupyterlab>=4.5.2",
+    "numpy>=2.4.1",
+    "pandas>=2.3.3",
+    "rasterio>=1.5.0",
+    "plotly>=5.24.1",
+    "ipywidgets>=8.1.5",
 ]
 
 [build-system]
@@ -35,7 +40,7 @@ ignore = ["D203", "D213", "ANN401"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["D", "ANN", "S101"]
-"analysis/**" = ["D", "BLE", "G"]
+"analysis/**" = ["D", "BLE", "G", "ANN", "ARG", "A"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
@@ -46,3 +51,6 @@ exclude_gitignore = true
 
 [tool.pytest.ini_options]
 addopts = "-v --cov=src/mimosa --cov-report=html"
+markers = [
+    "integration: marks tests as integration tests (requires data files)",
+]
